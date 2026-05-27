@@ -1,0 +1,4 @@
+interface:
+  display_name: "Git Summarize Changes"
+  short_description: "Summarize branch vs base for MR-style output"
+  default_prompt: "Summarize the current branch against an auto-discovered base branch. Validate git state first, output concise MR-style markdown, and copy to clipboard when possible."
