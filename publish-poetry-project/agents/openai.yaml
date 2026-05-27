@@ -1,0 +1,7 @@
+interface:
+  display_name: "Publish Poetry Project"
+  short_description: "Add GitHub and PyPI release automation"
+  default_prompt: "Use $publish-poetry-project to add build and publish automation for a Poetry project, including GitHub Releases and PyPI publishing."
+
+policy:
+  allow_implicit_invocation: true
