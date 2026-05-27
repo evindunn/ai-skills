@@ -1,6 +1,6 @@
 ---
 name: publish-poetry-project
-description: Add or update build and publishing automation for Poetry-based Python projects. Use when Codex needs to configure GitHub Actions workflows for tagged releases, build wheels and sdists, publish artifacts to GitHub Releases, publish packages to PyPI, and document the release process in a Poetry project's repository.
+description: Add or update build and publishing automation for Poetry-based Python projects. Use when an agent needs to configure GitHub Actions workflows for tagged releases, build wheels and sdists, publish artifacts to GitHub Releases, publish packages to PyPI, and document the release process in a Poetry project's repository.
 ---
 
 # Publish Poetry Project
