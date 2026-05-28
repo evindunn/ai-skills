@@ -15,11 +15,9 @@ Before editing:
 
 When implementing the workflow:
 
-1. Add a GitHub Actions workflow under `.github/workflows/` that triggers on version tags such as `v*`.
-2. Build the distribution artifacts once with `poetry build`.
-3. Upload the built artifacts so downstream jobs reuse the same wheel and sdist.
-4. Publish the artifacts to a GitHub Release when the run was triggered by a tag.
-5. Publish the same artifacts to PyPI, preferably with trusted publishing through GitHub OIDC.
+1. Start from [templates/workflow.yml.tmpl](templates/workflow.yml.tmpl) instead of drafting the GitHub Actions workflow from scratch.
+2. Render the template into a `.github/workflows/*.yml` workflow with [scripts/render_template.py](scripts/render_template.py), passing template values such as `workflow_name`, `tag_pattern`, `artifact_name`, and `pypi_environment`.
+   Example: `python3 scripts/render_template.py templates/workflow.yml.tmpl workflow_name=Release 'tag_pattern=v*' artifact_name=python-package pypi_environment=pypi`
 
 When updating project files:
 
@@ -29,8 +27,9 @@ When updating project files:
 
 Validation steps:
 
-1. Re-read the workflow file for trigger, artifact, and permission correctness.
-2. Run `poetry build` locally when possible.
-3. Call out any remaining manual setup, especially PyPI trusted publisher configuration and required GitHub permissions.
+1. Re-read the rendered workflow file for trigger, container image, artifact, and permission correctness.
+2. Confirm that the rendered workflow still matches the structure in [templates/workflow.yml.tmpl](templates/workflow.yml.tmpl) unless the project needed a deliberate deviation.
+3. Run `poetry build` locally when possible.
+4. Call out any remaining manual setup, especially PyPI trusted publisher configuration and required GitHub permissions.
 
 Read [references/checklist.md](references/checklist.md) before substantial publishing changes.

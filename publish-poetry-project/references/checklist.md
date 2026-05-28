@@ -11,13 +11,8 @@ Use this checklist when adding release automation to a Poetry project.
 
 ## Workflow design
 
-1. Trigger on pushed version tags such as `v*`.
-2. Add `workflow_dispatch` when manual runs are useful.
-3. Build once with `poetry build`.
-4. Upload the `dist/` artifacts and reuse them in publish jobs.
-5. Use GitHub Release upload for repository artifacts.
-6. Use `pypa/gh-action-pypi-publish` for PyPI publishing.
-7. Prefer `id-token: write` and PyPI trusted publishing over API tokens when possible.
+1. Start from `templates/workflow.yml.tmpl` when it fits the project.
+2. Prefer rendering it with `scripts/render_template.py` instead of hand-editing repeated workflow structure.
 
 ## Permissions and environments
 
@@ -36,4 +31,4 @@ Use this checklist when adding release automation to a Poetry project.
 
 1. Run `poetry build` when the environment allows it.
 2. Check that the built artifacts include required package resources.
-3. Confirm that the workflow reuses uploaded artifacts instead of rebuilding in each publish job.
+3. Confirm that the rendered workflow still matches `templates/workflow.yml.tmpl` unless the project needed a documented exception.
