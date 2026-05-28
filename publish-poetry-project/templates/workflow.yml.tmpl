@@ -4,19 +4,28 @@ on:
   push:
     tags:
       - "{tag_pattern}"
-  workflow_dispatch:
+  workflow_dispatch: {{}}
 
 jobs:
   build:
     name: Build distributions
     runs-on: ubuntu-latest
     container:
-      image: evindunn/poetry:latest
+      image: 'evindunn/poetry:latest'
+      env:
+        POETRY_CACHE_DIR: ~/.cache/poetry
     permissions:
       contents: read
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
+
+      - uses: actions/cache@v5
+        with:
+          path: ~/.cache/poetry
+          key: ${{{{ runner.os }}}}-poetry-${{{{ hashFiles('poetry.lock') }}}}
+          restore-keys: |
+            ${{{{ runner.os }}}}-poetry-
 
       - name: Build distributions
         run: poetry build
