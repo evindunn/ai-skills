@@ -1,0 +1,4 @@
+interface:
+  display_name: "Refactor Testing"
+  short_description: "Find high-value test targets and add tests"
+  default_prompt: "Use $refactor-testing to reuse the cached shortlist when fresh, confirm the next untested target with me, add focused tests, mark it complete, and summarize."
