@@ -1,0 +1,4 @@
+interface:
+  display_name: "JFrog Docker Image Search"
+  short_description: "Find Docker image tags in Artifactory with jfrog CLI."
+  default_prompt: "Search Artifactory with jf for an available Docker image tag."
