@@ -1,0 +1,4 @@
+interface:
+  display_name: "Document Code"
+  short_description: "Add useful code comments and docstrings"
+  default_prompt: "Use $document-code to improve comments and docstrings in this code."
